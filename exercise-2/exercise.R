@@ -1,35 +1,39 @@
 # Create a vector of 100 employees ("Employee 1", "Employee 2", ... "Employee 100)
 # Hint: use the `paste()` function to produce the list
-
+num <- c(1:100)
+employees <- paste("Employee",num,sep = " ")
 
 # Create a vector of 100 random salaries for the year 2014
 # Use the `runif()` function to pick a random number between 40000 and 50000
-
+salary2014 <- runif(100,40000,50000)
 
 # Create a vector of 100 salaries in 2015 that have increased from 2014 by some amount
 # Hint: use `runif()` to add a random number to 2014's salaries. Starting from a
 # _negative_ number so that salaries may decrease!
-
+negnum <- runif(100,-300,0)
+salary2015 <- salary2014 - negnum
 
 # Create a data.frame 'salaries' by combining the 3 vectors you just made
 # Remember to set `stringsAsFactors=FALSE`!
-
+salaries <- data.frame(salary2014,salary2015,stringsAsFactors = F)
+rownames(salaries) <- employees
 
 # Create a column 'raise' that stores the size of the raise between 2014 and 2015
-
+raise <- salary2014-salary2015
 
 # Create a column 'got.raise' that is TRUE if the person got a raise
+got.raise <- raise >0
 
-
+salaries[, "if there's raise"] <- got.raise
 ### Retrieve values from your data frame to answer the following questions
 ### Note that you should get the value as specific as possible (e.g., a single
 ### cell rather than the whole row!)
 
 # What was the 2015 salary of employee 57
-
+salaries[5,]
 
 # How many employees got a raise?
-
+nrows(got.raise = T)
 
 # What was the value of the highest raise?
 
