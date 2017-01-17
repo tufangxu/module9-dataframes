@@ -18,13 +18,17 @@ salary2015 <- salary2014 - negnum
 salaries <- data.frame(salary2014,salary2015,stringsAsFactors = F)
 rownames(salaries) <- employees
 
+
 # Create a column 'raise' that stores the size of the raise between 2014 and 2015
 raise <- salary2014-salary2015
 
 # Create a column 'got.raise' that is TRUE if the person got a raise
 got.raise <- raise >0
 
-salaries[, "if there's raise"] <- got.raise
+salaries[,"raise"] <- raise
+salaries[, "up"] <- got.raise
+salaries$`if there's raise` <-NULL
+head(salaries)
 ### Retrieve values from your data frame to answer the following questions
 ### Note that you should get the value as specific as possible (e.g., a single
 ### cell rather than the whole row!)
@@ -33,21 +37,21 @@ salaries[, "if there's raise"] <- got.raise
 salaries[5,]
 
 # How many employees got a raise?
-nrows(got.raise = T)
+nrow(salaries$up==T)
 
 # What was the value of the highest raise?
-
+max(raise)
 
 # What was the "name" of the employee who received the highest raise?
-
-
+rownames(salaries[,max(raise))
+         
 # What was the largest decrease in salaries between the two years?
-
+max <- max(abs(raise))
 
 # What was the name of the employee who recieved largest decrease in salary?
-
+rownames(salaries[raise == max])
 # What was the average salary increase?
-
+ave <- mean(raise)
 
 ### Bonus ###
 
