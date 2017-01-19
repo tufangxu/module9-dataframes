@@ -29,19 +29,26 @@ write.csv(husky.games.2015, "huskies_2015_improved.csv")
 
 
 # What is the score of the game where the Huskies had the most combined yards?
-most.yards <- max(husky.games.2015$combined)
-
+most.yards <- husky.scores[combined.yards==max(combined.yards)]
 
 # Define a function `MostYardsScore` that takes in an argument `games` (a data frame) and
 # returns a descriptive sentence about the game that was played that had the most yards scored in it
-MostYardsScore <- function(games,most.yards) {
-  View(games)
-  highest.score <- games[games$combined==most.yards]
+MostYardsScore <- function(games) {
+# View(games)
+  date <- games$date
+  opponents <- games$opponent
+  scores <- games$uw_score
+  
+  most.yards <- max(combined.yards)
+  opponents <- opponents[combined.yards==most.yards]
+  date <- date[combined.yards ==most.yards]
+  highest.score <- scores[combined.yards==most.yards]
+ 
   paste("On",games$date,", UW Husky played against", games$opponent,"passing yard is",games$passing_yards,"and rushing yard is",
-               games$rushing_yards,", and the most yards score in it were ", max(games$combined))
+               games$rushing_yards,", and the most yards score in it were ", highest.score)
 }
 
-
+data <= read.csv("data/huskies_
 
 # Challenge!
 # What was the highest yardage game so far this season?
