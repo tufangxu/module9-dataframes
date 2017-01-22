@@ -38,7 +38,7 @@ moneyFT <- USPersonalExpenditure["Food and Tobacco","1960"]
 # Hint: use the `max()` function to find the largest, then compare that to the column
 highest <- max(USPersonalExpenditure$`1960`)
 
-
+View(USPersonalExpenditure)
 # Define a function `DetectHighest` that takes in a year as a parameter, and
 # returns the highest spending category of that year
 DetectHighest <- function(year) {
